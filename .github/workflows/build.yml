@@ -17,7 +17,7 @@ jobs:
     steps:
       # Step 1: Check out your repository's code so the job can access it
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up a Python environment
       - name: Set up Python
@@ -37,7 +37,7 @@ jobs:
 
       # Step 5: Upload the generated .exe file as an artifact
       - name: Upload Windows Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: FloatingCounter-v${{ github.run_number }}
           path: dist/FloatingCounter-v${{ github.run_number }}.exe
@@ -50,7 +50,7 @@ jobs:
     steps:
       # Step 1: Check out your repository's code
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up a Python environment
       - name: Set up Python
@@ -74,7 +74,7 @@ jobs:
 
       # Step 6: Upload the generated .zip file as an artifact
       - name: Upload macOS Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: FloatingCounter-v${{ github.run_number }}
           path: FloatingCounter-v${{ github.run_number }}.zip
