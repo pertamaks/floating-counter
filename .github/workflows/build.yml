@@ -6,7 +6,8 @@ name: Build Cross-Platform Executables
 # This workflow runs on every push to the 'main' branch
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - 'v1.0'
 
 jobs:
   # --- Job 1: Build the Windows Executable ---
@@ -33,14 +34,14 @@ jobs:
 
       # Step 4: Run PyInstaller to create the versioned .exe file
       - name: Build with PyInstaller
-        run: pyinstaller --onefile --windowed --icon="counter_icon.ico" --name="FloatingCounter-v${{ github.run_number }}" main.py
+        run: pyinstaller --onefile --windowed --icon="counter_icon.ico" --name="FloatingCounter-${{ github.ref_name }}" main.py
 
       # Step 5: Upload the generated .exe file as an artifact
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: FloatingCounter_win-v${{ github.run_number }}
-          path: dist/FloatingCounter-v${{ github.run_number }}.exe
+          name: FloatingCounter_Windows-${{ github.ref_name }}
+          path: dist/FloatingCounter-${{ github.ref_name }}.exe
 
   # --- Job 2: Build the macOS Application ---
   build-macos:
@@ -66,15 +67,15 @@ jobs:
 
       # Step 4: Run PyInstaller to create the versioned .app file
       - name: Build with PyInstaller
-        run: pyinstaller --onefile --windowed --icon="counter_icon.icns" --name="FloatingCounter-v${{ github.run_number }}" main.py
+        run: pyinstaller --onefile --windowed --icon="counter_icon.icns" --name="FloatingCounter-${{ github.ref_name }}" main.py
 
       # Step 5: The .app is a folder. We need to zip it before uploading.
       - name: Zip the .app file
-        run: zip -r FloatingCounter-v${{ github.run_number }}.zip dist/FloatingCounter-v${{ github.run_number }}.app
+        run: zip -r FloatingCounter-${{ github.ref_name }}.zip dist/FloatingCounter-${{ github.ref_name }}.app
 
       # Step 6: Upload the generated .zip file as an artifact
       - name: Upload macOS Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: FloatingCounter_mac-v${{ github.run_number }}
-          path: FloatingCounter-v${{ github.run_number }}.zip
+          name: FloatingCounter_macOS-${{ github.ref_name }}
+          path: FloatingCounter-${{ github.ref_name }}.zip
