@@ -66,7 +66,7 @@ jobs:
 
       # Step 4: Run PyInstaller to create the versioned .app file
       - name: Build with PyInstaller
-        run: pyinstaller --onefile --windowed --icon="counter_icon.ico" --name="FloatingCounter-v${{ github.run_number }}" main.py
+        run: pyinstaller --onefile --windowed --icon="counter_icon.icns" --name="FloatingCounter-v${{ github.run_number }}" main.py
 
       # Step 5: The .app is a folder. We need to zip it before uploading.
       - name: Zip the .app file
