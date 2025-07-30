@@ -1,8 +1,8 @@
-# Floating Counter App
+# Floating Counter App – Always-on-Top Minimal Counter for Windows & macOS
 
-![Floating Counter App Screenshot](https://i.imgur.com/g0jMfrr.png) <!-- Replace with a URL to a screenshot of your app -->
+![Floating Counter App Screenshot](https://i.imgur.com/g0jMfrr.png) 
 
-A beautiful, lightweight, and always-on-top counter for Windows and macOS. Designed for maximum productivity and minimal distraction, this app floats cleanly over all your windows, allowing you to track counts, scores, or any other numbers without ever leaving your current task.
+Floating Counter App is a lightweight, distraction-free counter that stays on top of all windows. Ideal for tracking repetitions, scores, tasks, or anything countable without switching apps. Built with a clean and modern interface, it supports both Windows and macOS.
 
 ---
 
@@ -23,11 +23,19 @@ A beautiful, lightweight, and always-on-top counter for Windows and macOS. Desig
 You can download the latest pre-compiled version for your operating system from the **[Releases Page](https://github.com/pertamaks/floating-counter/releases)**.
 
 * **For Windows:** Download the `.exe` file.
+
+  _⚠️ First-Time Launch Note on Windows, you may encounter a system message like "Unregistered app" or a security prompt the first time you open the app. This is normal. Simply skip or dismiss the message to continue using the app safely._
+
 * **For macOS:** Download the `.zip` file and unzip it to get the `.app`.
-    * *Note for Mac users:* You may need to right-click the `.app` file and select "Open" the first time you run it to bypass Gatekeeper.
+
+  *Note for Mac users:* You may need to right-click the `.app` file and select "Open" the first time you run it to bypass Gatekeeper.
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+`floating counter`, `on-screen counter`, `minimal counter app`, `windows tally tool`, `macOS counter`, `frameless UI`, `PySide6`, `desktop productivity tools`, `counter for streamers`, `task tracker`
