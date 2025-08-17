@@ -34,7 +34,7 @@ jobs:
 
       # Step 4: Run PyInstaller to create the versioned .exe file
       - name: Build with PyInstaller
-        run: pyinstaller --onefile --windowed --icon="counter_icon.ico" --name="FloatingCounter-${{ github.ref_name }}" main.py
+        run: pyinstaller --onefile --windowed --icon="counter.ico" --name="FloatingCounter-${{ github.ref_name }}" main.py
 
       # Step 5: Upload the generated .exe file as an artifact
       - name: Upload Windows Artifact
@@ -67,7 +67,7 @@ jobs:
 
       # Step 4: Run PyInstaller to create the versioned .app file
       - name: Build with PyInstaller
-        run: pyinstaller --onefile --windowed --icon="counter_icon.icns" --name="FloatingCounter-${{ github.ref_name }}" main.py
+        run: pyinstaller --onefile --windowed --icon="counter.icns" --name="FloatingCounter-${{ github.ref_name }}" main.py
 
       # Step 5: The .app is a folder. We need to zip it before uploading.
       - name: Zip the .app file
