@@ -131,12 +131,6 @@ class CounterApp(QWidget):
         painter.setFont(QFont("Inter", 16, QFont.Weight.Bold))
         painter.drawText(QRectF(10, 78, 24, 24), Qt.AlignCenter, "⟳")
 
-    # --- Event Handling for Interactivity ---
-    def keyPressEvent(self, event):
-        """Handle key press events, specifically for the Escape key."""
-        if event.key() == Qt.Key_Escape:
-            QApplication.instance().quit()
-
     def mousePressEvent(self, event):
         """Handles mouse clicks for buttons, tabs, and dragging."""
         if event.button() == Qt.LeftButton:
