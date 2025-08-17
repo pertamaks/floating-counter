@@ -1,7 +1,8 @@
 import sys
 import math
-from PySide6.QtWidgets import QApplication, QWidget
-from PySide6.QtGui import QPainter, QColor, QPen, QBrush, QFont
+from PySide6.QtWidgets import QApplication, QWidget, QMenu, QMessageBox
+import webbrowser
+from PySide6.QtGui import QPainter, QColor, QPen, QBrush, QFont, QAction
 from PySide6.QtCore import Qt, QPoint, QRectF
 
 # --- Configuration from Final SVG ---
@@ -33,6 +34,7 @@ class CounterApp(QWidget):
         self.drag_position = None
 
         self.setup_ui()
+        self.repo_url = "https://github.com/pertamaks/floating-counter"
 
     def setup_ui(self):
         """Configures the window properties."""
@@ -41,8 +43,8 @@ class CounterApp(QWidget):
         # --- Create a Frameless, Transparent, Always-on-Top Window ---
         self.setWindowFlags(
             Qt.FramelessWindowHint |    # No title bar or borders
-            Qt.WindowStaysOnTopHint |   # Always on top
-            Qt.Tool                     # Doesn't show up in the task bar
+            Qt.WindowStaysOnTopHint  # Always on top
+            #Qt.Tool                     # Doesn't show up in the task bar
         )
         self.setAttribute(Qt.WA_TranslucentBackground) # Makes background transparent
 
@@ -155,7 +157,6 @@ class CounterApp(QWidget):
             elif math.sqrt((pos.x() - 22)**2 + (pos.y() - 93)**2) <= 12: # Reset
                 self.counters[self.active_tab] = 0
             elif math.sqrt((pos.x() - 109)**2 + (pos.y() - 12)**2) <= 12: # Close
-                # FIXED: Use quit() for a clean and full application exit
                 QApplication.instance().quit()
                 return
             else: # If no button is clicked, start dragging
@@ -163,6 +164,22 @@ class CounterApp(QWidget):
                 return
             
             self.update() # Trigger a repaint if a counter changed
+
+        elif event.button() == Qt.RightButton:
+            pos = event.position()
+            # Only show copyright if right-click is on the counter display
+            display_rect = QRectF(22, 23, 80, 68)
+            if display_rect.contains(pos):
+                self.show_copyright_menu(event.globalPosition().toPoint())
+
+    def show_copyright_menu(self, global_pos):
+        menu = QMenu(self)
+        action = QAction("© 2025 pertamaks/floating-counter", self)
+        menu.addAction(action)
+        def open_repo():
+            webbrowser.open(self.repo_url)
+        action.triggered.connect(open_repo)
+        menu.exec(global_pos)
 
     def mouseMoveEvent(self, event):
         """Handles window dragging."""

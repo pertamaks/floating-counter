@@ -1,6 +1,6 @@
 # Floating Counter App – Always-on-Top Minimal Counter for Windows & macOS
 
-![Floating Counter App Screenshot](https://i.imgur.com/g0jMfrr.png) 
+![Floating Counter App Screenshot](https://i.imgur.com/zopIIVS.png) 
 
 Floating Counter App is a lightweight, distraction-free counter that stays on top of all windows. Ideal for tracking repetitions, scores, tasks, or anything countable without switching apps. Built with a clean and modern interface, it supports both Windows and macOS.
 
